@@ -1,0 +1,37 @@
+.service{
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    animation-name: fadeInUp;
+    animation-duration: 2s;
+    animation-delay: 1s;
+}
+
+
+.oder-form input {
+    animation-name: fadeInUp;
+    animation-duration: 2s;
+    /* animation-delay: 1s; */
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 12px;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.24);
+    border-radius: 8px;
+}
+
+
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0 ;
+        -webkit-transform: translate3d(0, 40px, 0 );
+        transform: translate3d(0, 80px, 0 );
+    }
+    100% {
+        opacity: 1 ;
+        -webkit-transform: none ;
+        transform: none ;
+    }
+  }
