@@ -4,6 +4,8 @@ import About from './Pages/About/About';
 import Checkout from './Pages/Checkout/Checkout/Checkout';
 import AddService from './Pages/Home/AddService/AddService';
 import Home from './Pages/Home/Home/Home';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Login from './Pages/Login/Login/Login';
 import Register from './Pages/Login/Register/Register';
 import RequireAuth from './Pages/Login/RequireAuth/RequireAuth';
@@ -44,6 +46,7 @@ function App() {
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
+      <ToastContainer />
     </div>
   );
 }

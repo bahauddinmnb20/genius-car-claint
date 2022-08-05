@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
@@ -6,6 +5,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import auth from '../../../firebase.init';
+import useToken from '../../../hooks/UseToken';
 import Loading from '../../Shared/Loading/Loading';
 import PageTitle from '../../Shared/PageTitle/PageTitle';
 import SocialLogin from '../SocialLogin/SocialLogin';
@@ -26,13 +26,14 @@ const Login = () => {
     ] = useSignInWithEmailAndPassword(auth);
 
     const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
+    const [token] = useToken(user);
 
     if (loading || sending) {
         return <Loading></Loading>
     }
 
-    if (user) {
-        // navigate(from, { replace: true });
+    if (token) {
+        navigate(from, { replace: true });
     }
 
     if (error) {
@@ -45,9 +46,6 @@ const Login = () => {
         const password = passwordRef.current.value;
 
         await signInWithEmailAndPassword(email, password);
-        const { data } = await axios.post('https://shielded-crag-04533.herokuapp.com/login', { email });
-        localStorage.setItem('accessToken', data.accessToken);
-        navigate(from, { replace: true });
 
     }
 

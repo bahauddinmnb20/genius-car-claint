@@ -21,9 +21,9 @@ const Checkout = () => {
             address: event.target.address.value,
             phone: event.target.phone.value
         }
-        axios.post('https://shielded-crag-04533.herokuapp.com/order', order)
+        axios.post('https://shielded-crag-04533.herokuapp.com/order')
             .then(response => {
-                console.log(response)
+                console.log(response);
                 const { data } = response;
                 if (data.insertedId) {
                     toast('Your order is success!!!');
@@ -62,7 +62,7 @@ const Checkout = () => {
                 <br />
                 <input type="text" name="address" placeholder='address' autoComplete='off' required />
                 <br />
-                <Link to='/orders'><input className=' bg-primary text-white border-0' type="submit" value="please Order" /></Link>
+                <input className=' bg-primary text-white border-0' type="submit" value="please Order" />
 
                 <br />
             </form>
